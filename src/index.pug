@@ -1,0 +1,70 @@
+include ./mixins.pug
+
+- var socials = [ "tw", "fb", "b", "go", "yt"]
+-
+  var offers = [
+    {
+      name: "otdykh leisure",
+      info: "20th International trade fair for travel & tourism",
+      link: "otdykhleisure.com"
+    },
+    {
+      name: "otdykh mice",
+      info: "10th International meetings industry and business travel exhibition & conference",
+      link: "otdykhmice.com"
+    },
+    {
+      name: "otdykh luxury",
+      info: "9th International trade fair for luxury travel",
+      link: "otdykhluxury.com"
+    },
+    {
+      name: "otdykh spa & health",
+      info: "Pealthy prospects for your Business: OTDYKH SPA & HEALTH is dedicated to one of the fastest growing segment of the Russian Travel industry",
+      link: "otdykhspahealth.com"
+    }
+  ]
+
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title test page
+  body
+    .wrapper
+      .maincontent
+        .container.main-container
+          header.header 
+            .logo
+              +image('content/logo.png', 'logo-img', 'logo company')
+            .fest
+              span.fest-date september 16-19, 2014
+              span.fest-loc moscow, iec / crocus wxpo
+            .socials
+              ul.social-list
+                each social in socials 
+                  li.social-list__item
+                    a(class=`social-list__item-link-`+`${social}` href=`https::/`+`${social}`+`.com`)
+                      +image(`icons/`+`${social}.png`, `social-list__item-`+`${social}`,`social logo of `+`${social}`)
+              .lang
+                span.lang-item.lang-active English
+                span |
+                span.lang-item Russian
+          +nav('nav',["otdykh leisure","otdykh mice","otdykh luxury","otdykh spa & health"],1)
+          .container.container-slider
+            .slider
+              button.slider-btn.slider-btn-left  
+              ul.slider-list
+                li.slider-list__item
+                  +image('content/leisure.png', 'slider-list__item-img', 'image slider offers')
+                li.slider-list__item
+              button.slider-btn.slider-btn-right 
+          .container.container-offers
+            +offer('offers', offers, 0)
+        footer.wrapper-footer
+          .footer
+            span.footer-info © 1995-2013 | Euroexpo company. 
+              span.footer-info-stylezed OTDYKH Organizer
+            
